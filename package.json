@@ -1,0 +1,29 @@
+{
+  "name": "@screeps/mod_season1",
+  "version": "1.0.3",
+  "description": "Season 1 rules",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/screeps/mod_season1.git"
+  },
+  "keywords": [
+    "screeps",
+    "mod"
+  ],
+  "screeps_mod": true,
+  "author": {
+    "name": "Nikolay Kharitonov"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/screeps/mod_season1/issues"
+  },
+  "homepage": "https://github.com/screeps/mod_season1#readme",
+  "dependencies": {
+    "lodash": "^3.10.1"
+  }
+}
