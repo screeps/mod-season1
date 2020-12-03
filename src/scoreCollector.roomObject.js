@@ -6,6 +6,8 @@ module.exports = function(config) {
 
         config.common.constants.SCORE_COLLECTOR_SINK = 20;
         config.common.constants.SCORE_COLLECTOR_MAX_CAPACITY = 20000;
+
+        config.common.constants.WALLS_RADIUS = 5;
     }
 
     if(config.backend) {
@@ -83,7 +85,7 @@ module.exports = function(config) {
             const critHits = 300000000;
             const min = 70000000;
             const max = 130000000;
-            const radius = 5;
+            const radius = config.common.constants.WALLS_RADIUS;
 
             const collectors = await db['rooms.objects'].find({type: 'scoreCollector'});
             const crossroads = await db['rooms'].find({_id: {$regex: '0[NS]\\d?0$'}});
