@@ -97,10 +97,10 @@ module.exports = function(config) {
                     x2: 48 - radius,
                     y1: 2 + radius,
                     y2: 48 - radius
-                });
+                }).catch(() => false);
                 if (!freePos) {
                     console.log(`No free position for score collector in ${room._id}`);
-                    return;
+                    continue;
                 }
 
                 const structures = [];
