@@ -1,5 +1,5 @@
 {
-  "name": "@screeps/mod_season1",
+  "name": "@screeps/mod-season1",
   "version": "1.0.3",
   "description": "Season 1 rules",
   "main": "src/index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/screeps/mod_season1.git"
+    "url": "git+https://github.com/screeps/mod-season1.git"
   },
   "keywords": [
     "screeps",
@@ -20,9 +20,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/screeps/mod_season1/issues"
+    "url": "https://github.com/screeps/mod-season1/issues"
   },
-  "homepage": "https://github.com/screeps/mod_season1#readme",
+  "homepage": "https://github.com/screeps/mod-season1#readme",
   "dependencies": {
     "lodash": "^3.10.1"
   }
