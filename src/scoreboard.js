@@ -17,8 +17,8 @@ module.exports = function(config) {
 
     if(config.cronjobs) {
         config.cronjobs.updateRanks = [60, async function() {
-            const users = await config.common.storage.db['users'].find({cpu: {$gt: 0}}, {username: 1, score: 1, rank: 1});
-            const sortedUsers = _.sortByOrder(users, [u => (u.score||0), 'registeredDate'], ['desc', 'asc']);
+            const users = await config.common.storage.db['users'].find({cpu: {$gt: 0}}, {username: 1, score: 1, rank: 1, gcl: 1});
+            const sortedUsers = _.sortByOrder(users, [u => (u.score||0), u => (u.gcl||0)], ['desc', 'desc']);
             const promises = [];
             for(let i in sortedUsers) {
                 const rank = parseInt(i)+1;
