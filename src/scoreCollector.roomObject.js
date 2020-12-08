@@ -8,6 +8,8 @@ module.exports = function(config) {
         config.common.constants.SCORE_COLLECTOR_MAX_CAPACITY = 20000;
 
         config.common.constants.WALLS_RADIUS = 5;
+
+        config.common.constants.OBSTACLE_OBJECT_TYPES.push("scoreCollector");
     }
 
     if(config.backend) {
