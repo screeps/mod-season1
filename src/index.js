@@ -15,6 +15,7 @@ module.exports = function (config) {
     require('./decorations')(config);
     require('./scoreboard')(config);
     require('./terminal-restriction')(config);
+    require('./stronghold-rewards')(config);
     try{
         require('./official-specific')(config);
     } catch {}
