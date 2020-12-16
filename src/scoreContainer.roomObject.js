@@ -10,7 +10,8 @@ module.exports = function(config) {
         config.common.constants.FIND_SCORE_CONTAINERS = 10011;
 
         config.common.constants.SCORE_CONTAINER_SPAWN_CHANCE = 0.01;
-        config.common.constants.SCORE_CONTAINER_SPAWN_INTERVAL = 500; // seconds
+        config.common.constants.SCORE_CONTAINER_SPAWN_INTERVAL = 500; // seconds, obsolete
+        config.common.constants.SCORE_CONTAINER_SPAWN_INTERVAL_TICKS = 250; // ticks
     }
 
     if (config.backend) {
@@ -58,12 +59,18 @@ module.exports = function(config) {
     }
 
     if(config.cronjobs) {
-        config.cronjobs.genScoreContainers = [config.common.constants.SCORE_CONTAINER_SPAWN_INTERVAL, async ({utils}) => {
+        config.cronjobs.genScoreContainers = [60, async ({utils}) => {
             const { db, env } = config.common.storage;
             const gameTime = parseInt(await env.get(env.keys.GAMETIME));
             if(gameTime <= 1) {
                 return;
             }
+
+            const lastScoreContainersSpawnTick = parseInt(await env.get('lastScoreContainersSpawnTick'));
+            if((gameTime - lastScoreContainersSpawnTick) < config.common.constants.SCORE_CONTAINER_SPAWN_INTERVAL_TICKS) {
+                return;
+            }
+
             const cycleTime = gameTime % scoreCycle;
             if((cycleTime > crisisStart) && (cycleTime < crisisEnd)) {
                 return;
@@ -105,6 +112,7 @@ module.exports = function(config) {
                     console.log(`Spawned score container in ${freePos.x}:${freePos.y}@${room._id} (score: ${score}, roll ${densityRoll})`);
                 }
             }
+            await env.set('lastScoreContainersSpawnTick', gameTime);
         }];
     }
 };
