@@ -8,6 +8,7 @@ const maxDecay = 5000;
 module.exports = function(config) {
     if(config.common) {
         config.common.constants.FIND_SCORE_CONTAINERS = 10011;
+        config.common.constants.LOOK_SCORE_CONTAINERS = "scoreContainer";
 
         config.common.constants.SCORE_CONTAINER_SPAWN_CHANCE = 0.01;
         config.common.constants.SCORE_CONTAINER_SPAWN_INTERVAL = 500; // seconds, obsolete
@@ -44,7 +45,8 @@ module.exports = function(config) {
 
                 prototype.toString = function() { return `[scoreContainer #${this.id}]` };
             },
-            findConstant: config.common.constants.FIND_SCORE_CONTAINERS
+            findConstant: config.common.constants.FIND_SCORE_CONTAINERS,
+            lookConstant: config.common.constants.LOOK_SCORE_CONTAINERS
         });
 
         config.engine.on('processObject', function (object, roomObjects, roomTerrain, gameTime, roomInfo, objectsUpdate, usersUpdate) {

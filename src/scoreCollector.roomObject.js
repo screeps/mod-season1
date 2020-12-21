@@ -3,6 +3,7 @@ const _ = require('lodash');
 module.exports = function(config) {
     if(config.common) {
         config.common.constants.FIND_SCORE_COLLECTORS = 10012;
+        config.common.constants.LOOK_SCORE_COLLECTORS = "scoreCollector";
 
         config.common.constants.SCORE_COLLECTOR_SINK = 20;
         config.common.constants.SCORE_COLLECTOR_MAX_CAPACITY = 20000;
@@ -38,7 +39,8 @@ module.exports = function(config) {
                 });
                 prototype.toString = function() { return `[scoreCollector #${this.id}]` };
             },
-            findConstant: config.common.constants.FIND_SCORE_COLLECTORS
+            findConstant: config.common.constants.FIND_SCORE_COLLECTORS,
+            lookConstant: config.common.constants.LOOK_SCORE_COLLECTORS
         });
 
         config.engine.on('postProcessObject', function (object, roomObjects, roomTerrain, gameTime, roomInfo, bulk, bulkUsers, eventLog) {
